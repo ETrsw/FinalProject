@@ -13,6 +13,7 @@ Postman/browser examples of endpoints:
 3. Adding a sandwich to the database :  
 ![Post Request example](https://raw.githubusercontent.com/ETrsw/FinalProject/master/Postrequest.png)	
 POST request format example:
+
 {
    "sandwichname": "mysandwicdg1sfhh",
     "sandwichingredients":{
@@ -24,6 +25,7 @@ POST request format example:
         "otherType": "///blablalba"
     }
 }
+
 Any of the ingredients can be empty only the sandwich name needs to be there.
 
 4.Updating a sandwich name and ingredients using PUT method
