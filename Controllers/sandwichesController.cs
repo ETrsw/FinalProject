@@ -90,7 +90,7 @@ namespace sandwichAPI.Controllers
             }
 
              _context.Entry(sandwich).State = EntityState.Modified;
-
+             _context.Entry(sandwich.sandwichIngredients).State = EntityState.Modified;
             var name = sandwich.sandwichname;
             var givenid = sandwich.sandwichID;
             var list = await _context.sandwich.ToListAsync();
