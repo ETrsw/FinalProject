@@ -24,10 +24,31 @@ namespace sandwichAPI.Controllers
 
         // GET: api/sandwiches
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<sandwich>>> Getsandwich()
+      public async Task<ActionResult<Response>> Getsandwich()
         {
-            
-                return await _context.sandwich.ToListAsync();
+            var response = new Response();
+            try
+            {
+                
+                response.statusCode = 200;
+                response.statusDescription = "List of sandwdiches found";
+                response.sandwichList = await _context.sandwich.ToListAsync();
+                foreach(var sand in response.sandwichList)
+                {
+                    await _context.sandwichIngredients.FindAsync(sand.sandwichID);
+                }
+                return response;
+            }
+            catch (Exception)
+            {
+               if( _context.sandwich.ToListAsync().IsFaulted)
+                {
+                    response.statusDescription = "There is a problem with the server.";
+                    response.statusCode = 500;
+                    return response;
+                }
+            }
+            return response;
             
         }
         // GET: api/sandwiches/random
