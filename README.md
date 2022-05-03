@@ -12,7 +12,18 @@ Postman/browser examples of endpoints:
  
 3. Adding a sandwich to the database :  
 ![Post Request example](https://raw.githubusercontent.com/ETrsw/FinalProject/master/Postrequest.png)	
-
+POST request format example:
+{
+   "sandwichname": "mysandwicdg1sfhh",
+    "sandwichingredients":{
+        "breadType": "yyyyy3xyy",
+        "cheeseType":"xxxxxx35xx-fgdjg",
+        "condimentType":" hot ///sauce, mayo",
+        "meatType":"---'be///ef",
+        "veggieType": " ---lettu//ce, t//omato, onion",
+        "otherType": "///blablalba"
+    }
+}
 Any of the ingredients can be empty only the sandwich name needs to be there.
 
 4.Updating a sandwich name and ingredients using PUT method
@@ -22,6 +33,20 @@ Sandwich found using GET request in browser before change :
 ![Item before being updated](https://raw.githubusercontent.com/ETrsw/FinalProject/master/Putrequest.png)
 
 PUT Request in postman : 
+Format example:
+{
+   "sandwichID" : "7",
+   "sandwichname": "mysandwich93925",
+    "sandwichingredients":{ 
+           "sandwichingredientsID" : "7",
+        "breadType": "bbbbyyy3xyy",
+        "cheeseType":"xxxxxx35xx",
+        "condimentType":" hot ///sauce, mayo",
+        "meatType":"---'be///ef",
+        "veggieType": " ---lettwewu//dfce, t//omato, onion",
+        "otherType": "///blablalba"
+    }
+}
 
 ![Item being updated in postman](https://raw.githubusercontent.com/ETrsw/FinalProject/master/putrequest2.png)
 
