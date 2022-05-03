@@ -9,7 +9,7 @@ namespace sandwichAPI.Models
         public int statusCode { get; set; }
         public string statusDescription { get; set; }
          public sandwich?  sandwich { get; set; }
-        
+        public List<sandwich>? sandwichList { get; set; }
 
     }
 }
