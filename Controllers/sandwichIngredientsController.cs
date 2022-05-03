@@ -20,7 +20,7 @@ namespace sandwichAPI.Controllers
         {
             _context = context;
         }
-/*
+
         // GET: api/sandwichIngredients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<sandwichIngredients>>> GetsandwichIngredients()
@@ -41,7 +41,7 @@ namespace sandwichAPI.Controllers
 
             return sandwichIngredients;
         }
-*/      //nope
+      //nope
         // PUT: api/sandwichIngredients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
