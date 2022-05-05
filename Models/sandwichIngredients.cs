@@ -11,6 +11,6 @@ namespace sandwichAPI.Models
         public string? meatType { get; set; }
         public string? veggieType { get; set; }
         public string? otherType { get; set; }
-        
+        public int sandwichID { get; set; }
     }
 }
