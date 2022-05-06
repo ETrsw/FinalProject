@@ -106,16 +106,12 @@ namespace sandwichAPI.Controllers
         public async Task<ActionResult<Response>> Putsandwich(int id, sandwich sandwich)
         {
             var response = new Response();
-            var ingredients = await _context.sandwichIngredients.Where(x => x.sandwichID == id && x.sandwichIngredientsID == sandwich.sandwichIngredients.sandwichIngredientsID).ToListAsync();
-            if (id != sandwich.sandwichID || ingredients[0].sandwichIngredientsID != sandwich.sandwichIngredients.sandwichIngredientsID)
-            {
-                response.statusCode = 400;
-                response.statusDescription = "Wrong sandwichId or ingredientsID.";
-                return response;
-            }
-
              _context.Entry(sandwich).State = EntityState.Modified;
              _context.Entry(sandwich.sandwichIngredients).State = EntityState.Modified;
+             
+            
+
+ 
             var name = sandwich.sandwichname;
             var givenid = sandwich.sandwichID;
             var list = await _context.sandwich.ToListAsync();
@@ -128,7 +124,15 @@ namespace sandwichAPI.Controllers
                     return response;
                 }
             }
-
+            
+            var ingredients = await _context.sandwichIngredients.Where(x => x.sandwichID == id && x.sandwichIngredientsID == sandwich.sandwichIngredients.sandwichIngredientsID).ToListAsync();
+            if (id != sandwich.sandwichID || ingredients[0].sandwichIngredientsID != sandwich.sandwichIngredients.sandwichIngredientsID)
+            {
+                response.statusCode = 400;
+                response.statusDescription = "Wrong sandwichId or ingredientsID.";
+                return response;
+            }
+            
             try
             {
                 await _context.SaveChangesAsync();
