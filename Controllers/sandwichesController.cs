@@ -35,7 +35,8 @@ namespace sandwichAPI.Controllers
                 response.sandwichList = await _context.sandwich.ToListAsync();
                 foreach(var sand in response.sandwichList)
                 {
-                    await _context.sandwichIngredients.FindAsync(sand.sandwichID);
+                   var ingredients =   _context.sandwichIngredients.Where(x => x.sandwichID == sand.sandwichID).ToList();
+                    sand.sandwichIngredients = ingredients[0];
                 }
                 return response;
             }
@@ -68,7 +69,8 @@ namespace sandwichAPI.Controllers
             }
             
             
-            var sandwichIngredients = await _context.sandwichIngredients.FindAsync(response.sandwich.sandwichID);
+             var ingredients = _context.sandwichIngredients.Where(x => x.sandwichID == response.sandwich.sandwichID).ToList();
+            response.sandwich.sandwichIngredients = ingredients[0];
             response.statusCode = 200;
             response.statusDescription = "Try this sandwich.";
             return response;
@@ -91,6 +93,8 @@ namespace sandwichAPI.Controllers
             response.statusCode = 200;
             response.statusDescription = "Sandwich found";
             response.sandwich = sandwich;
+             var ingredients = _context.sandwichIngredients.Where(x => x.sandwichID == id).ToList();
+            sandwich.sandwichIngredients = ingredients[0];
             
             return response;
         }
